@@ -3,11 +3,11 @@ package com.m2ez.tank;
 import java.awt.*;
 
 public class Bullet {
+    public static final int WIDTH = ResourceMgr.bulletD.getWidth();
+    public static final int HEIGHT = ResourceMgr.bulletD.getHeight();
     private static final int SPEED = 10;
-    private static final int WIDTH = 30, HEIGHT = 30;
-
-    private int x, y;
     private final Dir dir;
+    private int x, y;
     private TankFrame tf = null;
 
     private boolean live = true;
@@ -25,10 +25,20 @@ public class Bullet {
             tf.bulletList.remove(this);
         }
 
-        Color c = g.getColor();
-        g.setColor(Color.RED);
-        g.fillOval(x, y, WIDTH, HEIGHT);
-        g.setColor(c);
+        switch (dir) {
+            case LEFT:
+                g.drawImage(ResourceMgr.bulletL, x, y, null);
+                break;
+            case UP:
+                g.drawImage(ResourceMgr.bulletU, x, y, null);
+                break;
+            case RIGHT:
+                g.drawImage(ResourceMgr.bulletR, x, y, null);
+                break;
+            case DOWN:
+                g.drawImage(ResourceMgr.bulletD, x, y, null);
+                break;
+        }
 
         move();
     }
@@ -50,6 +60,6 @@ public class Bullet {
                 break;
         }
 
-        if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT)  live = false;
+        if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) live = false;
     }
 }

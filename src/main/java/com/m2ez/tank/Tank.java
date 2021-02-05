@@ -3,6 +3,8 @@ package com.m2ez.tank;
 import java.awt.*;
 
 public class Tank {
+    public static final int WIDTH = ResourceMgr.tankD.getWidth();
+    public static final int HEIGHT = ResourceMgr.tankD.getHeight();
     private static final int SPEED = 5;
     private final TankFrame tf;
     private int x, y;
@@ -72,6 +74,8 @@ public class Tank {
     }
 
     public void fire() {
-        tf.bulletList.add(new Bullet(x, y, dir, tf));
+        int bx = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
+        int by = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
+        tf.bulletList.add(new Bullet(bx, by, dir, tf));
     }
 }
