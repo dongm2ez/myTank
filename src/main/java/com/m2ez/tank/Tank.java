@@ -17,10 +17,13 @@ public class Tank {
 
     private boolean moving = false;
 
-    public Tank(int x, int y, Dir dir) {
+    private TankFrame tf;
+
+    public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     public Dir getDir() {
@@ -59,5 +62,7 @@ public class Tank {
         }
     }
 
-
+    public void fire() {
+        tf.myBullet = new Bullet(x, y, dir);
+    }
 }
