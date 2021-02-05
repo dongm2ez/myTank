@@ -12,10 +12,21 @@ public class Bullet {
 
     private boolean living = true;
 
-    public Bullet(int x, int y, Dir dir, TankFrame tf) {
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    private Group group = Group.BAD;
+
+    public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -64,6 +75,8 @@ public class Bullet {
     }
 
     public void collideWith(Tank tank) {
+        if (this.group == tank.getGroup()) return;
+
         Rectangle rectangle1 = new Rectangle(x, y, WIDTH, HEIGHT);
         Rectangle rectangle2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
         
