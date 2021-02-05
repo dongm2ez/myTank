@@ -7,7 +7,6 @@ public class Explode {
     public static final int HEIGHT = ResourceMgr.explodes[0].getHeight();
     private int x, y;
     private TankFrame tf = null;
-    private boolean living = true;
 
     private int step = 0;
 
@@ -19,22 +18,9 @@ public class Explode {
     }
 
     public void paint(Graphics g) {
-
-        if (!living) {
-            tf.explodes.remove(this);
-        }
-
         g.drawImage(ResourceMgr.explodes[step++], x, y, null);
 
-        if (step >= ResourceMgr.explodes.length) {
-            this.die();
-            step = 0;
-        }
-        ;
-    }
-
-    private void die() {
-        this.living = false;
+        if (step >= ResourceMgr.explodes.length) tf.explodes.remove(this);
     }
 
 
