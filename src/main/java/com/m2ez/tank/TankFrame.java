@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
 public class TankFrame extends Frame {
 
     private Dir dir = Dir.DOWN;
-    private static final int x = 200, y = 200;
+    private static int x = 200, y = 200;
     private static final int SPEED = 10;
 
     public TankFrame() {
