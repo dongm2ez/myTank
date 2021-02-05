@@ -5,7 +5,8 @@ import java.awt.*;
 public class Explode {
     public static final int WIDTH = ResourceMgr.explodes[0].getWidth();
     public static final int HEIGHT = ResourceMgr.explodes[0].getHeight();
-    private int x, y;
+    private final int x;
+    private final int y;
     private TankFrame tf = null;
 
     private int step = 0;

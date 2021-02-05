@@ -11,7 +11,7 @@ import java.util.List;
 public class TankFrame extends Frame {
 
     static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960;
-    Tank myTank = new Tank(200, 400, Dir.DOWN, Group.GOOD, this);
+    Tank myTank = new Tank(200, 400, Dir.UP, Group.GOOD, this);
 
     List<Bullet> bulletList = new ArrayList<>();
     List<Tank> tanks = new ArrayList<>();
