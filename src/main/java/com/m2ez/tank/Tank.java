@@ -106,7 +106,7 @@ public class Tank {
                 break;
         }
 
-        if (random.nextInt(10) > 8) this.fire();
+        if (random.nextInt(10) > 8 && this.group == Group.BAD) this.fire();
 
 //        randomDir();
     }
@@ -119,6 +119,7 @@ public class Tank {
 
     public void die() {
         this.living = false;
+        tf.explodes.add(new Explode(x, y, tf));
     }
 
 
