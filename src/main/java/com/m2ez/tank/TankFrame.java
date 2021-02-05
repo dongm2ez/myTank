@@ -5,13 +5,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
 
+    static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
     Tank myTank = new Tank(200, 200, Dir.DOWN, this);
-    Bullet myBullet = new Bullet(300, 300, Dir.DOWN);
-
-    private static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
+    List<Bullet> bulletList = new ArrayList<>();
+    Bullet myBullet = new Bullet(300, 300, Dir.DOWN, this);
+    Image offScreenImage = null;
 
     public TankFrame() {
         setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -29,8 +32,6 @@ public class TankFrame extends Frame {
         });
     }
 
-    Image offScreenImage = null;
-
     @Override
     public void update(Graphics g) {
         if (offScreenImage == null) {
@@ -39,7 +40,7 @@ public class TankFrame extends Frame {
         Graphics gOffScreen = offScreenImage.getGraphics();
         Color c = gOffScreen.getColor();
         gOffScreen.setColor(Color.BLACK);
-        gOffScreen.fillRect(0,0,GAME_WIDTH, GAME_HEIGHT);
+        gOffScreen.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
         gOffScreen.setColor(c);
         paint(gOffScreen);
         g.drawImage(offScreenImage, 0, 0, null);
@@ -47,8 +48,15 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
+        Color c = g.getColor();
+        g.setColor(Color.WHITE);
+        g.drawString("子弹的数量：" + bulletList.size(), 10, 60);
+        g.setColor(c);
+
         myTank.paint(g);
-        myBullet.paint(g);
+        for (int i = 0; i < bulletList.size(); i++) {
+            bulletList.get(i).paint(g);
+        }
     }
 
     class MyKeyListener extends KeyAdapter {

@@ -3,9 +3,18 @@ package com.m2ez.tank;
 import java.awt.*;
 
 public class Tank {
+    private static final int SPEED = 5;
+    private final TankFrame tf;
     private int x, y;
     private Dir dir = Dir.DOWN;
-    private static final int SPEED = 5;
+    private boolean moving = false;
+
+    public Tank(int x, int y, Dir dir, TankFrame tf) {
+        this.x = x;
+        this.y = y;
+        this.dir = dir;
+        this.tf = tf;
+    }
 
     public boolean isMoving() {
         return moving;
@@ -13,17 +22,6 @@ public class Tank {
 
     public void setMoving(boolean moving) {
         this.moving = moving;
-    }
-
-    private boolean moving = false;
-
-    private TankFrame tf;
-
-    public Tank(int x, int y, Dir dir, TankFrame tf) {
-        this.x = x;
-        this.y = y;
-        this.dir = dir;
-        this.tf = tf;
     }
 
     public Dir getDir() {
@@ -63,6 +61,6 @@ public class Tank {
     }
 
     public void fire() {
-        tf.myBullet = new Bullet(x, y, dir);
+        tf.bulletList.add(new Bullet(x, y, dir, tf));
     }
 }
