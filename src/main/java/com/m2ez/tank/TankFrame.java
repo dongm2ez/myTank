@@ -10,7 +10,7 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 
-    static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
+    static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960;
     Tank myTank = new Tank(200, 400, Dir.DOWN, Group.GOOD, this);
     Bullet myBullet = new Bullet(300, 300, Dir.DOWN, Group.GOOD, this);
     Explode explode = new Explode(100, 100, this);

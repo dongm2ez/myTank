@@ -68,6 +68,12 @@ public class Tank {
 
         if (!living) tf.tanks.remove(this);
 
+        drawTank(g);
+
+        move();
+    }
+
+    private void drawTank(Graphics g) {
         switch (dir) {
             case LEFT:
                 g.drawImage(ResourceMgr.tankL, x, y, null);
@@ -82,9 +88,6 @@ public class Tank {
                 g.drawImage(ResourceMgr.tankD, x, y, null);
                 break;
         }
-
-
-        move();
     }
 
     private void move() {
