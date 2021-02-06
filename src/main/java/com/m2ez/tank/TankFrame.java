@@ -2,6 +2,7 @@ package com.m2ez.tank;
 
 import com.m2ez.tank.enums.Dir;
 import com.m2ez.tank.enums.Group;
+import com.m2ez.tank.mgr.PropertyMgr;
 import com.m2ez.tank.strategy.DefaultFireStrategy;
 import com.m2ez.tank.strategy.FireStrategy;
 import com.m2ez.tank.strategy.SuperFireStrategy;
@@ -14,9 +15,10 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class TankFrame extends Frame {
 
-    static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960;
+    static final int GAME_WIDTH = Integer.parseInt((String) PropertyMgr.get("gameWidth")), GAME_HEIGHT = Integer.parseInt((String) PropertyMgr.get("gameHeight"));
     Tank myTank = new Tank(200, 400, Dir.UP, Group.GOOD, this);
     FireStrategy fireStrategy = new DefaultFireStrategy();
 

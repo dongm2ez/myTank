@@ -2,6 +2,7 @@ package com.m2ez.tank;
 
 import com.m2ez.tank.enums.Dir;
 import com.m2ez.tank.enums.Group;
+import com.m2ez.tank.mgr.PropertyMgr;
 import com.m2ez.tank.mgr.ResourceMgr;
 import com.m2ez.tank.strategy.DefaultFireStrategy;
 import com.m2ez.tank.strategy.FireStrategy;
@@ -12,7 +13,7 @@ import java.util.Random;
 public class Tank {
     public static final int WIDTH = ResourceMgr.goodTankD1.getWidth();
     public static final int HEIGHT = ResourceMgr.goodTankD1.getHeight();
-    private static final int SPEED = 5;
+    private static final int SPEED = Integer.parseInt((String) PropertyMgr.get("tankSpeed"));
     private final TankFrame tf;
 
     private final Random random = new Random();

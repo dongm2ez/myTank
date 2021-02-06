@@ -2,6 +2,7 @@ package com.m2ez.tank;
 
 import com.m2ez.tank.enums.Dir;
 import com.m2ez.tank.enums.Group;
+import com.m2ez.tank.mgr.PropertyMgr;
 import com.m2ez.tank.mgr.ResourceMgr;
 
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.*;
 public class Bullet {
     public static final int WIDTH = ResourceMgr.bulletD.getWidth();
     public static final int HEIGHT = ResourceMgr.bulletD.getHeight();
-    private static final int SPEED = 10;
+    private static final int SPEED = Integer.parseInt((String) PropertyMgr.get("bulletSpeed"));
     private final Dir dir;
     private int x, y;
     private TankFrame tf = null;
