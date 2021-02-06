@@ -1,4 +1,4 @@
-package com.m2ez.tank;
+package com.m2ez.tank.mgr;
 
 import java.io.IOException;
 import java.util.Properties;

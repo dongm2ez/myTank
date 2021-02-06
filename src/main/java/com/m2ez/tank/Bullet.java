@@ -1,5 +1,9 @@
 package com.m2ez.tank;
 
+import com.m2ez.tank.enums.Dir;
+import com.m2ez.tank.enums.Group;
+import com.m2ez.tank.mgr.ResourceMgr;
+
 import java.awt.*;
 
 public class Bullet {
@@ -26,6 +30,8 @@ public class Bullet {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+
+        tf.bulletList.add(this);
     }
 
     public Group getGroup() {

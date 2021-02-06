@@ -1,5 +1,11 @@
 package com.m2ez.tank;
 
+import com.m2ez.tank.enums.Dir;
+import com.m2ez.tank.enums.Group;
+import com.m2ez.tank.strategy.DefaultFireStrategy;
+import com.m2ez.tank.strategy.FireStrategy;
+import com.m2ez.tank.strategy.SuperFireStrategy;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -12,6 +18,7 @@ public class TankFrame extends Frame {
 
     static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960;
     Tank myTank = new Tank(200, 400, Dir.UP, Group.GOOD, this);
+    FireStrategy fireStrategy = new DefaultFireStrategy();
 
     List<Bullet> bulletList = new ArrayList<>();
     List<Tank> tanks = new ArrayList<>();
@@ -106,8 +113,14 @@ public class TankFrame extends Frame {
                 case KeyEvent.VK_S:
                     bD = true;
                     break;
+                case KeyEvent.VK_F1:
+                    fireStrategy = new DefaultFireStrategy();
+                    break;
+                case KeyEvent.VK_F2:
+                    fireStrategy = new SuperFireStrategy();
+                    break;
                 case KeyEvent.VK_CONTROL:
-                    myTank.fire();
+                    myTank.fire(fireStrategy);
                     break;
                 default:
                     break;

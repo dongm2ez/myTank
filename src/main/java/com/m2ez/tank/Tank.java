@@ -1,5 +1,11 @@
 package com.m2ez.tank;
 
+import com.m2ez.tank.enums.Dir;
+import com.m2ez.tank.enums.Group;
+import com.m2ez.tank.mgr.ResourceMgr;
+import com.m2ez.tank.strategy.DefaultFireStrategy;
+import com.m2ez.tank.strategy.FireStrategy;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -29,6 +35,10 @@ public class Tank {
         rect.y = this.y;
         rect.width = WIDTH;
         rect.height = HEIGHT;
+    }
+
+    public TankFrame getTf() {
+        return tf;
     }
 
     public Group getGroup() {
@@ -114,7 +124,7 @@ public class Tank {
         }
 
         if (random.nextInt(100) > 95 && this.group == Group.BAD) {
-            this.fire();
+            this.fire(new DefaultFireStrategy());
             this.randomDir();
         }
 
@@ -135,10 +145,8 @@ public class Tank {
         this.dir = Dir.values()[random.nextInt(4)];
     }
 
-    public void fire() {
-        int bx = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
-        int by = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
-        tf.bulletList.add(new Bullet(bx, by, dir, group, tf));
+    public void fire(FireStrategy fireStrategy) {
+        fireStrategy.fire(this);
     }
 
     public void die() {

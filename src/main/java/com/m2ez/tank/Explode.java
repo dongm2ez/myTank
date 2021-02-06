@@ -1,5 +1,7 @@
 package com.m2ez.tank;
 
+import com.m2ez.tank.mgr.ResourceMgr;
+
 import java.awt.*;
 
 public class Explode {

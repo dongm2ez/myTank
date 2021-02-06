@@ -1,4 +1,6 @@
-package com.m2ez.tank;
+package com.m2ez.tank.mgr;
+
+import com.m2ez.tank.util.ImageUtil;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

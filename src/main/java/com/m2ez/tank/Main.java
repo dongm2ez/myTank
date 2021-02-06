@@ -1,5 +1,9 @@
 package com.m2ez.tank;
 
+import com.m2ez.tank.enums.Dir;
+import com.m2ez.tank.enums.Group;
+import com.m2ez.tank.mgr.PropertyMgr;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         TankFrame tf = new TankFrame();

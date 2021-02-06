@@ -1,4 +1,4 @@
-package com.m2ez.tank;
+package com.m2ez.tank.util;
 
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
