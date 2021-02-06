@@ -125,7 +125,18 @@ public class Tank {
         }
 
         if (random.nextInt(100) > 95 && this.group == Group.BAD) {
-            this.fire(new DefaultFireStrategy());
+            String badFireStrategy = (String) PropertyMgr.get("badFireStrategy");
+            FireStrategy fireStrategy = null;
+            try {
+                fireStrategy = (FireStrategy)Class.forName(badFireStrategy).newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            this.fire(fireStrategy);
             this.randomDir();
         }
 

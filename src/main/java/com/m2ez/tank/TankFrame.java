@@ -20,7 +20,7 @@ public class TankFrame extends Frame {
 
     static final int GAME_WIDTH = Integer.parseInt((String) PropertyMgr.get("gameWidth")), GAME_HEIGHT = Integer.parseInt((String) PropertyMgr.get("gameHeight"));
     Tank myTank = new Tank(200, 400, Dir.UP, Group.GOOD, this);
-    FireStrategy fireStrategy = new DefaultFireStrategy();
+    FireStrategy fireStrategy = null;
 
     List<Bullet> bulletList = new ArrayList<>();
     List<Tank> tanks = new ArrayList<>();
@@ -33,6 +33,17 @@ public class TankFrame extends Frame {
         setResizable(false);
         setTitle("tank war");
         setVisible(true);
+
+        String goodFireStrategy = (String) PropertyMgr.get("goodFireStrategy");
+        try {
+            fireStrategy = (FireStrategy)Class.forName(goodFireStrategy).newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         addKeyListener(new MyKeyListener());
 
