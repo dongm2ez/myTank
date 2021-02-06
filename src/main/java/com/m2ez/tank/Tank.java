@@ -16,12 +16,19 @@ public class Tank {
     private Dir dir = Dir.DOWN;
     private boolean moving = true;
 
+    Rectangle rect = new Rectangle();
+
     public Tank(int x, int y, Dir dir, Group group, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public Group getGroup() {
@@ -112,6 +119,9 @@ public class Tank {
         }
 
         boundsCheck();
+
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
     private void boundsCheck() {
