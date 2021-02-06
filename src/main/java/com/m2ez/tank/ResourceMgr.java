@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class ResourceMgr {
+    private static final ResourceMgr INSTANCE = new ResourceMgr();
+
     public static BufferedImage goodTankL1, goodTankL2, goodTankU1, goodTankU2, goodTankR1, goodTankR2, goodTankD1, goodTankD2;
     public static BufferedImage badTankL1, badTankL2, badTankU1, badTankU2, badTankR1, badTankR2, badTankD1, badTankD2;
     public static BufferedImage bulletL, bulletU, bulletR, bulletD;
@@ -44,5 +46,11 @@ public class ResourceMgr {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private ResourceMgr(){}
+
+    public static ResourceMgr getInstance() {
+        return INSTANCE;
     }
 }

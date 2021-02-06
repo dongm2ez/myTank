@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertyMgr {
-    static Properties properties = new Properties();
+    private static final PropertyMgr INSTANCE = new PropertyMgr();
+    private static final Properties properties = new Properties();
 
     static {
         try {
@@ -12,6 +13,12 @@ public class PropertyMgr {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private PropertyMgr() {}
+
+    public static PropertyMgr getInstance() {
+        return INSTANCE;
     }
 
     public static Object get(String key) {
